@@ -21,32 +21,37 @@ namespace FuckWxDotdot
         {
             int Cnt = 0;
             List<string> keys = Alias.Keys.ToList();
-            foreach(string Bitch in Bitches)
+            foreach (string Bitch in Bitches)
             {
+                bool affect = false;
                 string code = "";
                 using (Stream s = File.OpenRead(Bitch))
                 {
-                    using (StreamReader sr =new StreamReader(s))
+                    using (StreamReader sr = new StreamReader(s))
                     {
                         code = sr.ReadToEnd();
-                        foreach(string key in keys)
+                        foreach (string key in keys)
                         {
                             if (code.Contains(key))
                             {
                                 string TargetDir = Alias[key];
-                                string Dotdot = Helper.GenerateDotdot(Bitch,TargetDir);
+                                string Dotdot = Helper.GenerateDotdot(Bitch, TargetDir);
                                 code = code.Replace(key, Dotdot);
                                 Cnt++;
+                                affect = true;
                             }
                         }
                     }
                 }
-                File.Delete(Bitch);
-                using (Stream s = File.OpenWrite(Bitch))
+                if (affect)
                 {
-                    using (StreamWriter sr = new StreamWriter(s))
+                    File.Delete(Bitch);
+                    using (Stream s = File.OpenWrite(Bitch))
                     {
-                        sr.WriteLine(code);
+                        using (StreamWriter sr = new StreamWriter(s))
+                        {
+                            sr.WriteLine(code);
+                        }
                     }
                 }
             }

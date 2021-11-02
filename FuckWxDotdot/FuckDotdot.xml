@@ -1,6 +1,6 @@
 <FuckDotdot>
   <AliasSettings>
-    <Alias key="@ShiyiFramework">miniprogram\ShiyiFramework</Alias>
+    <Alias key="@ShiyiFramework">miniprogram/ShiyiFramework</Alias>
   </AliasSettings>
   <TargetFileTypes>
     <FileType>*.js</FileType>

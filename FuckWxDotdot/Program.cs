@@ -9,7 +9,7 @@ namespace FuckWxDotdot
     {
         static void Main(string[] args)
         {
-            string CurrentDir = Directory.GetCurrentDirectory()+"\\";
+            string CurrentDir = Directory.GetCurrentDirectory() + "\\";
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(CurrentDir + "FuckDotdot.xml");
             XmlNodeList keys = xmlDocument.SelectNodes("//Alias");
@@ -27,7 +27,8 @@ namespace FuckWxDotdot
             }
             FileHelper fileHelper = new FileHelper(TargetFileTypes);
             CodeHelper codeHelper = new CodeHelper(fileHelper, Alias);
-            codeHelper.Fuck(fileHelper.GetAllTargetFiles());
+            int affect = codeHelper.Fuck(fileHelper.GetAllTargetFiles());
+            Console.WriteLine("Affect:{0}", affect);
         }
 
 

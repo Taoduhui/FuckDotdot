@@ -29,13 +29,9 @@ namespace FuckWxDotdot
 
         public int GetDirectoryDepth(string filename)
         {
+            filename = filename.Replace("\\", "/");
             int Left = filename.Where(r => r == '/').Count();
-            int Right = filename.Where(r => r == '\\').Count();
-            if (Left != 0 && Right != 0)
-            {
-                throw new Exception("Path invaild!");
-            }
-            return Math.Max(Left, Right);
+            return Left;
         }
 
         public string GenerateDotdot(int depth)
@@ -48,12 +44,14 @@ namespace FuckWxDotdot
             return Dotdot;
         }
 
-        public string GenerateDotdot(string filename,string targetDir)
+        public string GenerateDotdot(string filename, string targetDir)
         {
+            filename = filename.Replace("\\", "/");
+            targetDir = targetDir.Replace("\\", "/");
             string dotdot = "";
             string srcDir = new FileInfo(filename).DirectoryName;
             string SameParent = "";
-            for (int i = 0; i < filename.Length && i<targetDir.Length; i++)
+            for (int i = 0; i < filename.Length && i < targetDir.Length; i++)
             {
                 if (filename[i] != targetDir[i])
                 {
