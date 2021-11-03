@@ -25,7 +25,7 @@ namespace FuckWxDotdot
                 List<string> TargetFileTypes = new List<string>();
                 TargetFileTypes.Add(node.Attributes["type"].Value);
                 FileHelper fileHelper = new FileHelper(TargetFileTypes);
-                XmlNodeList keys = node.SelectNodes("//Alias");
+                XmlNodeList keys = node.SelectNodes(".//Alias");
                 Dictionary<string, string> Alias = new Dictionary<string, string>();
                 foreach (XmlNode key in keys)
                 {
