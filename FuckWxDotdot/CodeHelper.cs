@@ -17,6 +17,7 @@ namespace FuckWxDotdot
             Alias = alias;
         }
 
+
         public int Fuck(List<string> Bitches)
         {
             int Cnt = 0;
@@ -43,15 +44,13 @@ namespace FuckWxDotdot
                         }
                     }
                 }
-                if (affect)
+                string TargetFile = Helper.GetTargetFile(Bitch);
+                File.Delete(TargetFile);
+                using (Stream s = File.OpenWrite(TargetFile))
                 {
-                    File.Delete(Bitch);
-                    using (Stream s = File.OpenWrite(Bitch))
+                    using (StreamWriter sr = new StreamWriter(s))
                     {
-                        using (StreamWriter sr = new StreamWriter(s))
-                        {
-                            sr.WriteLine(code);
-                        }
+                        sr.WriteLine(code);
                     }
                 }
             }

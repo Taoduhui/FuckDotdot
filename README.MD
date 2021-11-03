@@ -19,12 +19,14 @@
      </AliasSettings>
      <TargetFileTypes>
        <FileType type="*.js"></FileType>
-       <FileType type="*.json">
+       <FileType type="*.json">	
+         <Alias key="@Npm">miniprogram/miniprogram_npm</Alias>
+       </FileType>
+       <FileType type="*.src.wxss" to="*.wxss">	
          <Alias key="@Npm">miniprogram/miniprogram_npm</Alias>
        </FileType>
      </TargetFileTypes>
    </FuckDotdot>
-   
    ```
 
    注意：
@@ -34,6 +36,20 @@
    ​	Alias的路径**没有 " ./ "**，末尾也**不加 " / "** 
 
    ​	正反斜杠无所谓
+
+   ​	FileType中的to表示会将结果输出到带有新的扩展名的文件中
+
+   ​	可以在.vscode/setting,json中通过添加如下代码将输出文件隐藏
+
+   ```json
+   {
+       "files.exclude": {
+           "**/*.wxss": {
+               "when": "$(basename).src.wxss" //当存在.src.wxss同名文件时将.wxss隐藏
+           }
+       }
+   }
+   ```
 
    对于其他的配置了FileType文件同样有效，不限于js，但对于其他文件会直接替换掉Alias，请注意备份，以免误操作
 
@@ -62,4 +78,6 @@
    ```
 
 6. 开始编译
+
+7. 参数 **-w**  自动检测更改
 

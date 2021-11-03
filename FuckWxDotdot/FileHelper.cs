@@ -10,10 +10,31 @@ namespace FuckWxDotdot
     class FileHelper
     {
         List<string> FileTypes = new List<string>();
+        public Dictionary<string, string> ToNewFile = new Dictionary<string, string>();
 
         public FileHelper(List<string> fileTypes)
         {
             FileTypes = fileTypes;
+        }
+
+        public FileHelper(string fileType)
+        {
+            FileTypes.Add(fileType);
+        }
+
+        public string GetTargetFile(string filepath)
+        {
+            FileInfo info = new FileInfo(filepath);
+            string name = info.Name.Remove(info.Name.IndexOf("."));
+            string exname = "*" + info.Name.Remove(0, info.Name.IndexOf("."));
+            string TargetExname = ToNewFile.ContainsKey(exname) ? ToNewFile[exname] : exname;
+            return (info.DirectoryName + "/" + name + (TargetExname.Replace("*", ""))).Replace("\\", "/");
+        }
+
+        public FileHelper(string fileTypes, string toNewFile)
+        {
+            FileTypes.Add(fileTypes);
+            ToNewFile.Add(fileTypes, toNewFile);
         }
 
         public List<string> GetAllTargetFiles()
@@ -26,6 +47,7 @@ namespace FuckWxDotdot
             }
             return TargetFiles;
         }
+
 
         public int GetDirectoryDepth(string filename)
         {
