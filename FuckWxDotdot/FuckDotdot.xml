@@ -1,8 +1,11 @@
 <FuckDotdot>
   <AliasSettings>
-    <Alias key="@ShiyiFramework">miniprogram/ShiyiFramework</Alias>
+    <GlobalAlias key="@ShiyiFramework">miniprogram/ShiyiFramework</GlobalAlias>
   </AliasSettings>
   <TargetFileTypes>
-    <FileType>*.js</FileType>
+    <FileType type="*.js"></FileType>
+    <FileType type="*.json">
+      <Alias key="@Npm">miniprogram/miniprogram_npm</Alias>
+    </FileType>
   </TargetFileTypes>
 </FuckDotdot>
