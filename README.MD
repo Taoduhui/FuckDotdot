@@ -2,6 +2,8 @@
 
 用于解决微信小程序typescript无法绝对路径引用的问题
 
+[下载地址]: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.0
+
 原理：
 
 ​	替换字符串，所以请注意alias的key不要和代码重复，否则会被替换，可以使在前加特殊符号的方式表示
