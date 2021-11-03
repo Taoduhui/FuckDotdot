@@ -15,12 +15,16 @@
    ```xml
    <FuckDotdot>
      <AliasSettings>
-       <Alias key="@ShiyiFramework">miniprogram\ShiyiFramework</Alias>
+       <GlobalAlias key="@ShiyiFramework">miniprogram/ShiyiFramework</GlobalAlias>
      </AliasSettings>
      <TargetFileTypes>
-       <FileType>*.js</FileType>
+       <FileType type="*.js"></FileType>
+       <FileType type="*.json">
+         <Alias key="@Npm">miniprogram/miniprogram_npm</Alias>
+       </FileType>
      </TargetFileTypes>
    </FuckDotdot>
+   
    ```
 
    注意：
@@ -31,7 +35,7 @@
 
    ​	正反斜杠无所谓
 
-   对于其他的配置了FileType文件同样有效，不限
+   对于其他的配置了FileType文件同样有效，不限于js，但对于其他文件会直接替换掉Alias，请注意备份，以免误操作
 
 3. tsconfig.json中添加paths
 
