@@ -81,10 +81,24 @@ namespace FuckWxDotdot
                 }
                 SameParent += filename[i];
             }
+            if (SameParent[SameParent.Length - 1] != '/')
+            {
+                targetDir += "/";
+                SameParent += "/";
+            }
             int SameParentDepth = GetDirectoryDepth(SameParent);
             int srcDepth = GetDirectoryDepth(filename);
             dotdot += GenerateDotdot(srcDepth - SameParentDepth);
-            dotdot += targetDir.Remove(0, SameParent.Length);
+            if (dotdot == "") { dotdot = "./"; }
+            string InPath = targetDir.Remove(0, SameParent.Length);
+            if (InPath != "")
+            {
+                dotdot += InPath;
+            }
+            else
+            {
+                dotdot = dotdot.Remove(dotdot.Length - 1);
+            }
             return dotdot;
         }
     }

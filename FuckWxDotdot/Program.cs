@@ -48,8 +48,17 @@ namespace FuckWxDotdot
         private static void Run()
         {
             string CurrentDir = Directory.GetCurrentDirectory() + "\\";
+            string Config = "";
             XmlDocument xmlDocument = new XmlDocument();
-            xmlDocument.Load(CurrentDir + "FuckDotdot.xml");
+            using (Stream s = File.OpenRead(CurrentDir + "FuckDotdot.xml"))
+            {
+                using (StreamReader sr = new StreamReader(s))
+                {
+                    Config = sr.ReadToEnd();
+                }
+            }
+            xmlDocument.LoadXml(Config);
+            //xmlDocument.Load(CurrentDir + "FuckDotdot.xml");
             XmlNodeList GlobalKeys = xmlDocument.SelectNodes("//GlobalAlias");
             Dictionary<string, string> GlobalAlias = new Dictionary<string, string>();
             foreach (XmlNode node in GlobalKeys)
