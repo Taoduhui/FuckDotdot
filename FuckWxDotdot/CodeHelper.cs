@@ -50,7 +50,7 @@ namespace FuckWxDotdot
                 {
                     using (StreamWriter sr = new StreamWriter(s))
                     {
-                        sr.WriteLine(code);
+                        sr.Write(code);
                     }
                 }
             }

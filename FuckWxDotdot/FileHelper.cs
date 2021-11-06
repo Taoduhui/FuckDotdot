@@ -11,7 +11,7 @@ namespace FuckWxDotdot
     {
         List<string> FileTypes = new List<string>();
         public Dictionary<string, string> ToNewFile = new Dictionary<string, string>();
-
+        public List<string> Exclude = new List<string>();
         public FileHelper(List<string> fileTypes)
         {
             FileTypes = fileTypes;
@@ -43,7 +43,23 @@ namespace FuckWxDotdot
             foreach (string FileType in FileTypes)
             {
                 string[] res = Directory.GetFiles(Directory.GetCurrentDirectory(), FileType, SearchOption.AllDirectories);
-                TargetFiles.AddRange(new List<string>(res));
+                foreach (string path in res)
+                {
+                    bool skip = false;
+                    foreach (string exc in Exclude)
+                    {
+                        if (path.Contains(exc))
+                        {
+                            skip = true;
+                            break;
+                        }
+                    }
+                    if (!skip)
+                    {
+                        TargetFiles.Add(path);
+                    }
+                }
+
             }
             return TargetFiles;
         }
