@@ -28,6 +28,10 @@ Release: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.1
          <Alias key="@Npm">miniprogram/miniprogram_npm</Alias>
        </FileType>
      </TargetFileTypes>
+     <ExcludeSetting>
+       <Exclude>miniprogram/miniprogram_npm</Exclude>
+       <Exclude>node_modules</Exclude>
+     </ExcludeSetting>
    </FuckDotdot>
    ```
 
@@ -40,6 +44,8 @@ Release: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.1
    ​	正反斜杠无所谓
 
    ​	FileType中的to表示会将结果输出到带有新的扩展名的文件中
+
+   ​	Exclude表示需要跳过的目录
 
    ​	可以在.vscode/setting,json中通过添加如下代码将输出文件隐藏
 
@@ -81,5 +87,11 @@ Release: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.1
 
 6. 开始编译
 
-7. 参数 **-w**  自动检测更改
+7. 参数 **-w  [sec]**自动检测更改 ，sec为可选参数，用于设定在检测到变更后sec毫秒内无变更执行替换操作
+
+   ```
+   ./FuckWxDotdot.exe -w 200
+   ```
+
+   
 
