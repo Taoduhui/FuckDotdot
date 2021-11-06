@@ -2,7 +2,7 @@
 
 用于解决微信小程序typescript无法绝对路径引用的问题
 
-[下载地址]: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.0
+Release: https://github.com/Taoduhui/FuckDotdot/releases/tag/v1.2.1
 
 原理：
 
