@@ -1,0 +1,12 @@
+<ShiyiAsm>
+  <AliasSettings>
+  </AliasSettings>
+  <TargetFileTypes>
+    <FileType type="*.saml" to="*.wxml" >
+      <Asm key="{{Home}}">./Asm/{{Key}}.saml</Asm>
+    </FileType>
+  </TargetFileTypes>
+  <Command>
+    <AfterCmd>tsc</AfterCmd>
+  </Command>
+</ShiyiAsm>
